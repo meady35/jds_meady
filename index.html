@@ -1,150 +1,162 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>JDS Event Form Submission</title>
-<style>
-  body {
-    font-family: sans-serif;
-    margin: 0;
-    background-image: url('https://raw.githubusercontent.com/meady35/jds_meady/refs/heads/main/Virtual_Background_2.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    color: white;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column; /* Stack title and forms */
-  }
-  #page-title {
-    font-size: 2em; /* Increase font size */
-    margin-bottom: 20px; /* Add space below title */
-    text-align: center; /* Center the title */
-  }
-  #forms-container {
-      display: flex;
-  }
-  .form-container {
-    border: 1px solid #333;
-    padding: 20px;
-    margin: 10px;
-    width: 300px;
-    background-color: rgba(0, 0, 0, 0.7);
-  }
-  .form-container h2 {
-    margin-top: 0;
-  }
-  .form-container label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  .form-container input[type="text"],
-  .form-container textarea,
-  .form-container select {
-    width: calc(100% - 12px);
-    padding: 5px;
-    margin-bottom: 10px;
-    border: 1px solid #555;
-    background-color: #333;
-    color: white;
-    box-sizing: border-box;
-  }
-  .form-container button {
-    padding: 10px 15px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  .form-container select {
-    background-color: #333;
-  }
 
-</style>
+<head>
+    <title>Webhook Form Submission</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            background-image: url('https://raw.githubusercontent.com/meady35/jds_meady/refs/heads/main/Virtual_Background_2.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        #page-title {
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        #forms-container {
+            display: flex;
+        }
+
+        .form-container {
+            border: 1px solid #333;
+            padding: 20px;
+            margin: 10px;
+            width: 300px;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .form-container h2 {
+            margin-top: 0;
+        }
+
+        .form-container label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-container input[type="text"],
+        .form-container textarea,
+        .form-container select {
+            width: calc(100% - 12px);
+            padding: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #555;
+            background-color: #333;
+            color: white;
+            box-sizing: border-box;
+        }
+
+        .form-container button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .form-container select {
+            background-color: #333;
+        }
+    </style>
 </head>
+
 <body>
     <div id="page-title">
-        Cisco Journey Data Service
+         Cisco JDS
     </div>
     <div id="forms-container">
         <div class="form-container">
-          <h2>Contact Form</h2>
-          <form id="contactForm">
-            <label for="contactName">Name:</label>
-            <input type="text" id="contactName" name="name" required>
+            <h2>Contact Form</h2>
+            <form id="contactForm">
+                <label for="contactName">Name:</label>
+                <input type="text" id="contactName" name="name" required>
 
-            <label for="contactEmail">Email:</label>
-            <input type="text" id="contactEmail" name="email" required>
+                <label for="contactEmail">Email:</label>
+                <input type="text" id="contactEmail" name="email" required>
 
-            <label for="contactMessage">Message:</label>
-            <textarea id="contactMessage" name="message" rows="4" required></textarea>
+                <label for="contactMessage">Message:</label>
+                <textarea id="contactMessage" name="message" rows="4" required></textarea>
 
-            <label for="contactSubject">Subject:</label>
-            <select id="contactSubject" name="subject">
-                <option value="General Inquiry">General Inquiry</option>
-                <option value="Support">Support</option>
-                <option value="Sales">Sales</option>
+                <label for="contactSubject">Subject:</label>
+                <select id="contactSubject" name="subject">
+                    <option value="General Inquiry">General Inquiry</option>
+                    <option value="Support">Support</option>
+                    <option value="Sales">Sales</option>
                 </select>
 
-            <button type="button" onclick="submitForm('contactForm', https://hooks.us.webexconnect.io/events/B0I4ZT9X4G)">Submit</button>
-          </form>
+                <button type="button" onclick="submitForm('contactForm', 'https://hooks.us.webexconnect.io/events/B0I4ZT9X4G')">Submit</button>
+            </form>
         </div>
 
         <div class="form-container">
-          <h2>Order Form</h2>
-          <form id="orderForm">
-            <label for="orderItem">Item:</label>
-            <input type="text" id="orderItem" name="item" required>
+            <h2>Order Form</h2>
+            <form id="orderForm">
+                <label for="orderItem">Item:</label>
+                <input type="text" id="orderItem" name="item" required>
 
-            <label for="orderQuantity">Quantity:</label>
-            <input type="text" id="orderQuantity" name="quantity" required>
+                <label for="orderQuantity">Quantity:</label>
+                <input type="text" id="orderQuantity" name="quantity" required>
 
-            <label for="orderAddress">Address:</label>
-            <textarea id="orderAddress" name="address" rows="3" required></textarea>
+                <label for="orderAddress">Address:</label>
+                <textarea id="orderAddress" name="address" rows="3" required></textarea>
 
-            <label for="orderPayment">Payment Method:</label>
-            <select id="orderPayment" name="payment">
-                <option value="Credit Card">Credit Card</option>
-                <option value="PayPal">PayPal</option>
-                <option value="Bank Transfer">Bank Transfer</option>
-            </select>
+                <label for="orderPayment">Payment Method:</label>
+                <select id="orderPayment" name="payment">
+                    <option value="Credit Card">Credit Card</option>
+                    <option value="PayPal">PayPal</option>
+                    <option value="Bank Transfer">Bank Transfer</option>
+                </select>
 
-            <button type="button" onclick="submitForm('orderForm', 'https://hooks.us.webexconnect.io/events/B0I4ZT9X4G')">Submit</button>
-          </form>
+                <button type="button" onclick="submitForm('orderForm', 'https://hooks.us.webexconnect.io/events/B0I4ZT9X4G')">Submit</button>
+            </form>
         </div>
     </div>
 
-<script>
-function submitForm(formId, webhookUrl) {
-  const form = document.getElementById(formId);
-  const formData = new FormData(form);
-  const jsonData = {};
-  formData.forEach((value, key) => {
-    jsonData[key] = value;
-  });
+    <script>
+        function submitForm(formId, webhookUrl) {
+            const form = document.getElementById(formId);
+            const formData = new FormData(form);
+            const jsonData = {};
 
-  fetch(webhookUrl, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(jsonData),
-  })
-  .then(response => {
-    if (response.ok) {
-      alert('Form submitted successfully!');
-      form.reset();
-    } else {
-      alert('Form submission failed.');
-    }
-  })
-  .catch(error => {
-    console.error('Error:', error);
-    alert('An error occurred during form submission.');
-  });
-}
-</script>
+            // Convert FormData to JSON
+            formData.forEach((value, key) => {
+                jsonData[key] = value;
+            });
+
+            fetch(webhookUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json', // Important: Set Content-Type header
+                },
+                body: JSON.stringify(jsonData), // Send JSON data
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Form submitted successfully!');
+                    form.reset();
+                } else {
+                    alert('Form submission failed.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred during form submission.');
+            });
+        }
+    </script>
 
 </body>
+
 </html>
