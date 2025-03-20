@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Webhook Form Submission</title>
+    <title>Cisco Journey Data Service</title>
     <style>
         body {
             font-family: sans-serif;
@@ -25,14 +25,9 @@
             text-align: center;
         }
 
-        #forms-container {
-            display: flex;
-        }
-
         .form-container {
             border: 1px solid #333;
             padding: 20px;
-            margin: 10px;
             width: 300px;
             background-color: rgba(0, 0, 0, 0.7);
         }
@@ -74,58 +69,29 @@
 
 <body>
     <div id="page-title">
-         Cisco JDS
+        Contact Us
     </div>
-    <div id="forms-container">
-        <div class="form-container">
-            <h2>Contact Form</h2>
-            <form id="contactForm">
-                <label for="contactName">Name:</label>
-                <input type="text" id="contactName" name="name" required>
-                
-                <label for="contactphone">Phone:</label>
-                <input type="text" id="contactPhone" name="phone" required>
+    <div class="form-container">
+        <h2>Contact Form</h2>
+        <form id="contactForm">
+            <label for="contactName">Name:</label>
+            <input type="text" id="contactName" name="name" required>
 
-                <label for="contactEmail">Email:</label>
-                <input type="text" id="contactEmail" name="email" required>
+            <label for="contactEmail">Email:</label>
+            <input type="text" id="contactEmail" name="email" required>
 
-                <label for="contactMessage">Message:</label>
-                <textarea id="contactMessage" name="message" rows="4" required></textarea>
+            <label for="contactMessage">Message:</label>
+            <textarea id="contactMessage" name="message" rows="4" required></textarea>
 
-                <label for="contactSubject">Subject:</label>
-                <select id="contactSubject" name="subject">
-                    <option value="General Inquiry">General Inquiry</option>
-                    <option value="Support">Support</option>
-                    <option value="Sales">Sales</option>
-                    <option value="Web">Web</option>
-                </select>
+            <label for="contactSubject">Subject:</label>
+            <select id="contactSubject" name="subject">
+                <option value="General Inquiry">General Inquiry</option>
+                <option value="Support">Support</option>
+                <option value="Sales">Sales</option>
+            </select>
 
-                <button type="button" onclick="submitForm('contactForm', 'https://hooks.us.webexconnect.io/events/B0I4ZT9X4G')">Submit</button>
-            </form>
-        </div>
-
-        <div class="form-container">
-            <h2>Order Form</h2>
-            <form id="orderForm">
-                <label for="orderItem">Item:</label>
-                <input type="text" id="orderItem" name="item" required>
-
-                <label for="orderQuantity">Quantity:</label>
-                <input type="text" id="orderQuantity" name="quantity" required>
-
-                <label for="orderAddress">Address:</label>
-                <textarea id="orderAddress" name="address" rows="3" required></textarea>
-
-                <label for="orderPayment">Payment Method:</label>
-                <select id="orderPayment" name="payment">
-                    <option value="Credit Card">Credit Card</option>
-                    <option value="PayPal">PayPal</option>
-                    <option value="Bank Transfer">Bank Transfer</option>
-                </select>
-
-                <button type="button" onclick="submitForm('orderForm', 'https://hooks.us.webexconnect.io/events/B0I4ZT9X4G')">Submit</button>
-            </form>
-        </div>
+            <button type="button" onclick="submitForm('contactForm', 'https://hooks.us.webexconnect.io/events/B0I4ZT9X4G')">Submit</button>
+        </form>
     </div>
 
     <script>
@@ -134,7 +100,6 @@
             const formData = new FormData(form);
             const jsonData = {};
 
-            // Convert FormData to JSON
             formData.forEach((value, key) => {
                 jsonData[key] = value;
             });
@@ -142,9 +107,9 @@
             fetch(webhookUrl, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json', // Important: Set Content-Type header
+                    'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(jsonData), // Send JSON data
+                body: JSON.stringify(jsonData),
             })
             .then(response => {
                 if (response.ok) {
