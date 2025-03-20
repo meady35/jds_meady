@@ -13,12 +13,12 @@
     border: 1px solid #333;
     padding: 20px;
     margin-bottom: 20px;
-    width: 30%; /* Use 30% of the screen */
-    float: left; /* Float left to arrange side-by-side */
-    margin-right: 20px; /* Add some space between forms */
+    width: 30%;
+    float: left;
+    margin-right: 20px;
   }
   .form-container:last-child {
-      margin-right: 0; /*remove right margin from the last element*/
+      margin-right: 0;
   }
   .form-container h2 {
     margin-top: 0;
@@ -48,150 +48,23 @@
   .form-container select {
     background-color: #333;
   }
-  .clearfix::after { /*clear float*/
+  .clearfix::after {
     content: "";
     clear: both;
     display: table;
   }
-</style>
-</head>
-<body>
-
-<div class="clearfix">
-  <div class="form-container">
-    <h2>Contact Form</h2>
-    <form id="contactForm">
-      <label for="contactName">Name:</label>
-      <input type="text" id="contactName" name="name" required>
-
-      <label for="contactEmail">Email:</label>
-      <input type="text" id="contactEmail" name="email" required>
-
-      <label for="contactMessage">Message:</label>
-      <textarea id="contactMessage" name="message" rows="4" required></textarea>
-
-      <label for="contactSubject">Subject:</label>
-      <select id="contactSubject" name="subject">
-          <option value="General Inquiry">General Inquiry</option>
-          <option value="Support">Support</option>
-          <option value="Sales">Sales</option>
-      </select>
-
-      <button type="button" onclick="submitForm('contactForm', 'YOUR_WEBHOOK_URL_CONTACT')">Submit</button>
-    </form>
-  </div>
-
-  <div class="form-container">
-    <h2>Order Form</h2>
-    <form id="orderForm">
-      <label for="orderItem">Item:</label>
-      <input type="text" id="orderItem" name="item" required>
-
-      <label for="orderQuantity">Quantity:</label>
-      <input type="text" id="orderQuantity" name="quantity" required>
-
-      <label for="orderAddress">Address:</label>
-      <textarea id="orderAddress" name="address" rows="3" required></textarea>
-
-      <label for="orderPayment">Payment Method:</label>
-      <select id="orderPayment" name="payment">
-          <option value="Credit Card">Credit Card</option>
-          <option value="PayPal">PayPal</option>
-          <option value="Bank Transfer">Bank Transfer</option>
-      </select>
-
-      <button type="button" onclick="submitForm('orderForm', 'YOUR_WEBHOOK_URL_ORDER')">Submit</button>
-    </form>
-  </div>
-</div>
-
-<script>
-function submitForm(formId, webhookUrl) {
-  const form = document.getElementById(formId);
-  const formData = new FormData(form);
-  const jsonData = {};
-  formData.forEach((value, key) => {
-    jsonData[key] = value;
-  });
-
-  fetch(webhookUrl, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(jsonData),
-  })
-  .then(response => {
-    if (response.ok) {
-      alert('Form submitted successfully!');
-      form.reset();
-    } else {
-      alert('Form submission failed.');
-    }
-  })
-  .catch(error => {
-    console.error('Error:', error);
-    alert('An error occurred during form submission.');
-  });
-}
-</script>
-
-</body>
-</html><!DOCTYPE html>
-<html>
-<head>
-<title>Webhook Form Submission</title>
-<style>
-  body {
-    font-family: sans-serif;
-    margin: 20px;
-    background-color: black;
-    color: white;
-  }
-  .form-container {
+  .image-placeholder {
+    width: 30%; /* Match form width */
+    float: left;
+    height: 300px; /* Adjust height as needed */
+    background-color: #222; /* Darker background for placeholder */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #888; /* Gray text for placeholder */
     border: 1px solid #333;
-    padding: 20px;
-    margin-bottom: 20px;
-    width: 30%; /* Use 30% of the screen */
-    float: left; /* Float left to arrange side-by-side */
-    margin-right: 20px; /* Add some space between forms */
   }
-  .form-container:last-child {
-      margin-right: 0; /*remove right margin from the last element*/
-  }
-  .form-container h2 {
-    margin-top: 0;
-  }
-  .form-container label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  .form-container input[type="text"],
-  .form-container textarea,
-  .form-container select {
-    width: calc(100% - 12px);
-    padding: 5px;
-    margin-bottom: 10px;
-    border: 1px solid #555;
-    background-color: #333;
-    color: white;
-    box-sizing: border-box;
-  }
-  .form-container button {
-    padding: 10px 15px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  .form-container select {
-    background-color: #333;
-  }
-  .clearfix::after { /*clear float*/
-    content: "";
-    clear: both;
-    display: table;
-  }
+
 </style>
 </head>
 <body>
@@ -242,6 +115,9 @@ function submitForm(formId, webhookUrl) {
       <button type="button" onclick="submitForm('orderForm', 'YOUR_WEBHOOK_URL_ORDER')">Submit</button>
     </form>
   </div>
+    <div class="image-placeholder">
+        Image Placeholder
+    </div>
 </div>
 
 <script>
@@ -277,15 +153,3 @@ function submitForm(formId, webhookUrl) {
 
 </body>
 </html>
-
-Key Changes:
- * Width Adjustment:
-   * .form-container { width: 30%; } sets the width of each form container to 30% of the screen width.
- * Floating Elements:
-   * .form-container { float: left; } makes the form containers float left, which arranges them side-by-side.
-   * margin-right is added to give space between the forms.
-   * margin-right:0 is added to the last form so that it does not have a right margin.
- * Clearfix:
-   * A .clearfix div is added around the forms to prevent floating elements from causing layout issues.
-   * The .clearfix::after CSS rule ensures that the container properly wraps the floated elements.
- * Layout: The two forms will now display next to each other, each taking up roughly one third of the browser window.
