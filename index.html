@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>JDS Event Form Submission</title>
+<title>Webhook Form Submission</title>
 <style>
   body {
     font-family: sans-serif;
-    margin: 20px;
-    background-color: black;
+    margin: 0; /* Remove default body margin */
+    background-image: url('https://raw.githubusercontent.com/meady35/jds_meady/refs/heads/main/Virtual_Background_2.jpg'); /* Full page background */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: white;
+    height: 100vh; /* Ensure full viewport height */
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
   }
   .form-container {
     border: 1px solid #333;
     padding: 20px;
-    margin-bottom: 20px;
-    width: 30%;
-    float: left;
-    margin-right: 20px;
-  }
-  .form-container:last-child {
-      margin-right: 0;
+    margin: 10px; /* Add margin between forms */
+    width: 300px; /* Set fixed width for better control */
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
   }
   .form-container h2 {
     margin-top: 0;
@@ -48,72 +51,59 @@
   .form-container select {
     background-color: #333;
   }
-  .clearfix::after {
-    content: "";
-    clear: both;
-    display: table;
-  }
-  .image-background {
-    width: 30%;
-    float: left;
-    height: 300px;
-    background-image: url('https://raw.githubusercontent.com/meady35/jds_meady/refs/heads/main/Virtual_Background_2.jpg'); /* Set image as background */
-    background-size: cover; /* Cover the entire area */
-    background-position: center; /* Center the image */
-    border: 1px solid #333;
+  #forms-container {
+      display: flex;
   }
 
 </style>
 </head>
 <body>
 
-<div class="clearfix">
-  <div class="form-container">
-    <h2>Contact Form</h2>
-    <form id="contactForm">
-      <label for="contactName">Name:</label>
-      <input type="text" id="contactName" name="name" required>
+<div id="forms-container">
+    <div class="form-container">
+      <h2>Contact Form</h2>
+      <form id="contactForm">
+        <label for="contactName">Name:</label>
+        <input type="text" id="contactName" name="name" required>
 
-      <label for="contactEmail">Email:</label>
-      <input type="text" id="contactEmail" name="email" required>
+        <label for="contactEmail">Email:</label>
+        <input type="text" id="contactEmail" name="email" required>
 
-      <label for="contactMessage">Message:</label>
-      <textarea id="contactMessage" name="message" rows="4" required></textarea>
+        <label for="contactMessage">Message:</label>
+        <textarea id="contactMessage" name="message" rows="4" required></textarea>
 
-      <label for="contactSubject">Subject:</label>
-      <select id="contactSubject" name="subject">
-          <option value="General Inquiry">General Inquiry</option>
-          <option value="Support">Support</option>
-          <option value="Sales">Sales</option>
-      </select>
+        <label for="contactSubject">Subject:</label>
+        <select id="contactSubject" name="subject">
+            <option value="General Inquiry">General Inquiry</option>
+            <option value="Support">Support</option>
+            <option value="Sales">Sales</option>
+        </select>
 
-      <button type="button" onclick="submitForm('contactForm', 'YOUR_WEBHOOK_URL_CONTACT')">Submit</button>
-    </form>
-  </div>
+        <button type="button" onclick="submitForm('contactForm', 'YOUR_WEBHOOK_URL_CONTACT')">Submit</button>
+      </form>
+    </div>
 
-  <div class="form-container">
-    <h2>Order Form</h2>
-    <form id="orderForm">
-      <label for="orderItem">Item:</label>
-      <input type="text" id="orderItem" name="item" required>
+    <div class="form-container">
+      <h2>Order Form</h2>
+      <form id="orderForm">
+        <label for="orderItem">Item:</label>
+        <input type="text" id="orderItem" name="item" required>
 
-      <label for="orderQuantity">Quantity:</label>
-      <input type="text" id="orderQuantity" name="quantity" required>
+        <label for="orderQuantity">Quantity:</label>
+        <input type="text" id="orderQuantity" name="quantity" required>
 
-      <label for="orderAddress">Address:</label>
-      <textarea id="orderAddress" name="address" rows="3" required></textarea>
+        <label for="orderAddress">Address:</label>
+        <textarea id="orderAddress" name="address" rows="3" required></textarea>
 
-      <label for="orderPayment">Payment Method:</label>
-      <select id="orderPayment" name="payment">
-          <option value="Credit Card">Credit Card</option>
-          <option value="PayPal">PayPal</option>
-          <option value="Bank Transfer">Bank Transfer</option>
-      </select>
+        <label for="orderPayment">Payment Method:</label>
+        <select id="orderPayment" name="payment">
+            <option value="Credit Card">Credit Card</option>
+            <option value="PayPal">PayPal</option>
+            <option value="Bank Transfer">Bank Transfer</option>
+        </select>
 
-      <button type="button" onclick="submitForm('orderForm', 'YOUR_WEBHOOK_URL_ORDER')">Submit</button>
-    </form>
-  </div>
-    <div class="image-background">
+        <button type="button" onclick="submitForm('orderForm', 'YOUR_WEBHOOK_URL_ORDER')">Submit</button>
+      </form>
     </div>
 </div>
 
