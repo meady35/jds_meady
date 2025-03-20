@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Webhook Form Submission</title>
+<title>JDS Event Form Submission</title>
 <style>
   body {
     font-family: sans-serif;
@@ -53,22 +53,14 @@
     clear: both;
     display: table;
   }
-  .image-placeholder {
+  .image-background {
     width: 30%;
     float: left;
     height: 300px;
-    background-color: #222;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #888;
+    background-image: url('https://raw.githubusercontent.com/meady35/jds_meady/refs/heads/main/Virtual_Background_2.jpg'); /* Set image as background */
+    background-size: cover; /* Cover the entire area */
+    background-position: center; /* Center the image */
     border: 1px solid #333;
-  }
-  .image-placeholder img {
-    max-width: 100%; /* Ensure image fits within placeholder */
-    max-height: 100%;
-    object-fit: contain; /* Prevents distortion */
-
   }
 
 </style>
@@ -121,8 +113,7 @@
       <button type="button" onclick="submitForm('orderForm', 'YOUR_WEBHOOK_URL_ORDER')">Submit</button>
     </form>
   </div>
-    <div class="image-placeholder">
-      <img src="https://raw.githubusercontent.com/meady35/jds_meady/refs/heads/main/Virtual_Background_2.jpg" alt="Image Placeholder">
+    <div class="image-background">
     </div>
 </div>
 
