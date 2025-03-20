@@ -1,14 +1,108 @@
-<!DOCTYPE html> <html lang=en><!--
- Page saved with SingleFile 
- url: https://s3.us-east-2.amazonaws.com/ciscodave.com.customer.journey/WxCC/dist/index.html 
- saved date: Fri Feb 18 2022 14:19:10 GMT-0500 (Eastern Standard Time)
---><meta charset=utf-8>
-<title>CJaaS Web Components</title>
-<meta name=viewport content="width=device-width, initial-scale=1">
-<link rel="shortcut icon" href=data:application/xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPEVycm9yPjxDb2RlPkFjY2Vzc0RlbmllZDwvQ29kZT48TWVzc2FnZT5BY2Nlc3MgRGVuaWVkPC9NZXNzYWdlPjxSZXF1ZXN0SWQ+Q1ZXUjc5UVgwSDYzOFpLRTwvUmVxdWVzdElkPjxIb3N0SWQ+YURpaW9RSGdzY3laL3RMaE55bDNrbGloZmh6YnZNOUExK1lMWS9OQXpyeUpkdm81RElLWGh1NXVmRzNVU1BvV0JSVHdMaDhNOXFnPTwvSG9zdElkPjwvRXJyb3I+><link rel=canonical href=https://s3.us-east-2.amazonaws.com/ciscodave.com.customer.journey/WxCC/dist/index.html><meta http-equiv=content-security-policy content="default-src 'none'; font-src 'self' data:; img-src 'self' data:; style-src 'unsafe-inline'; media-src 'self' data:; script-src 'unsafe-inline' data:;"></head>
- 
- <body style=overflow-x:hidden>
- <customer-journey-widget limit=20 customer=mikeeady user-search eventicontemplate=${iconData} base-url=https://cjaas-devus2.azurewebsites.net base-url-admin=https://cjaas-devus2-admin.azurewebsites.net tape-token="so=carehybrid&amp;sn=sandbox&amp;ss=tape&amp;sp=r&amp;se=2022-02-17T23:13:08.181Z&amp;sk=Meady&amp;sig=q0TUSLqg2flvEPyEUa5GC%2BF8cG36YGJ1idP1vJgyHqY%3D" stream-token="so=carehybrid&amp;sn=sandbox&amp;ss=stream&amp;sp=r&amp;se=2022-02-17T22:55:07.261Z&amp;sk=Meady&amp;sig=xyP%2BpnAdjWlYSopjW13W%2BdwOdCpGso5jLEBmZVsIGT0%3D" profile-read-token="so=carehybrid&amp;sn=sandbox&amp;ss=profile&amp;sp=r&amp;se=2022-02-18T19:36:24.172Z&amp;sk=Meady&amp;sig=5uLE0okpU1P8k21bbQqquZK3GTujUDLzIFMWGE86uyY%3D" profile-write-token="so=carehybrid&amp;sn=sandbox&amp;ss=profile&amp;sp=w&amp;se=2022-02-18T19:34:33.006Z&amp;sk=Meady&amp;sig=vHDmUoicR0f5NLCGIYdHrcS%2BqpPLrNJBxd%2ByZ3D4yoA%3D" identity-read-sas-token="so=carehybrid&amp;sn=sandbox&amp;ss=idmt&amp;sp=r&amp;se=2022-02-17T23:05:30.172Z&amp;sk=Meady&amp;sig=sOP5E7CPiF6A%2B4iuO1LQJ4AN0e7yEgVkjJGZYn2WOIQ%3D" identity-write-sas-token="so=carehybrid&amp;sn=sandbox&amp;ss=idmt&amp;sp=w&amp;se=2022-02-17T23:04:24.760Z&amp;sk=Meady&amp;sig=Ya4vrlBy%2B45Do3lpveex4kS6iVojOlShXV7FEPFwq%2BA%3D">
- </customer-journey-widget>
- 
+<!DOCTYPE html>
+<html>
+<head>
+<title>CJDS Form Submission</title>
+<style>
+  body {
+    font-family: sans-serif;
+    margin: 20px;
+  }
+  .form-container {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  .form-container h2 {
+    margin-top: 0;
+  }
+  .form-container label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  .form-container input[type="text"],
+  .form-container textarea {
+    width: calc(100% - 12px); /* Adjust for padding and border */
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    box-sizing: border-box; /* Include padding and border in width */
+  }
+  .form-container button {
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="form-container">
+  <h2>Contact Form</h2>
+  <form id="contactForm">
+    <label for="contactName">Name:</label>
+    <input type="text" id="contactName" name="name" required>
+
+    <label for="contactEmail">Email:</label>
+    <input type="text" id="contactEmail" name="email" required>
+
+    <label for="contactMessage">Message:</label>
+    <textarea id="contactMessage" name="message" rows="4" required></textarea>
+
+    <button type="button" onclick="submitForm('contactForm', 'YOUR_WEBHOOK_URL_CONTACT')">Submit</button>
+  </form>
+</div>
+
+<div class="form-container">
+  <h2>Order Form</h2>
+  <form id="orderForm">
+    <label for="orderItem">Item:</label>
+    <input type="text" id="orderItem" name="item" required>
+
+    <label for="orderQuantity">Quantity:</label>
+    <input type="text" id="orderQuantity" name="quantity" required>
+
+    <label for="orderAddress">Address:</label>
+    <textarea id="orderAddress" name="address" rows="3" required></textarea>
+
+    <button type="button" onclick="submitForm('orderForm', 'YOUR_WEBHOOK_URL_ORDER')">Submit</button>
+  </form>
+</div>
+
+<script>
+function submitForm(formId, webhookUrl) {
+  const form = document.getElementById(formId);
+  const formData = new FormData(form);
+  const jsonData = {};
+  formData.forEach((value, key) => {
+    jsonData[key] = value;
+  });
+
+  fetch(webhookUrl, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(jsonData),
+  })
+  .then(response => {
+    if (response.ok) {
+      alert('Form submitted successfully!');
+      form.reset(); // Clear the form
+    } else {
+      alert('Form submission failed.');
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    alert('An error occurred during form submission.');
+  });
+}
+</script>
+
+</body>
+</html>
+
  
